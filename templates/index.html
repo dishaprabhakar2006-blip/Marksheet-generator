@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Marks Card Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+            background-color: #f9f9f9;
+        }
+        h2 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        .warning-box {
+            background: #fff3cd;
+            border: 1px solid #ffeeba;
+            padding: 15px;
+            margin: 20px auto;
+            border-radius: 8px;
+            max-width: 700px;
+        }
+        .warning-box strong {
+            color: #856404;
+        }
+        form {
+            text-align: center;
+            margin-top: 20px;
+        }
+        input[type="file"] {
+            margin-bottom: 15px;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            padding: 10px 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .example-img {
+            display: block;
+            margin: 10px auto;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h2>📄 Marks Card Generator</h2>
+
+    <div class="warning-box">
+        <strong>⚠️ Important:</strong>  
+        Please make sure your Excel file has the following column names:
+        <ul>
+            <li><b>Name</b></li>
+            <li><b>Mother</b></li>
+            <li><b>Father</b></li>
+            <li><b>Register No</b></li>
+            <li><b>SATS No</b></li>
+            <li><b>Kannada, English, Chemistry, Physics, Biology, Mathematics</b></li>
+        </ul>
+        <p>If the format is wrong, the PDF generation will fail.</p>
+        <p>👉 Example format:</p>
+        <img src="{{ url_for('static', filename='excel_demo.png') }}" 
+             alt="Excel Format Example" class="example-img" width="80%">
+    </div>
+
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept=".xlsx,.csv" required>
+        <br>
+        <button type="submit">Generate & Download</button>
+    </form>
+</body>
+</html>
