@@ -1,0 +1,7 @@
+uploads/
+outputs/
+output/
+*.xlsx
+*.xls
+*.csv
+*.pdf

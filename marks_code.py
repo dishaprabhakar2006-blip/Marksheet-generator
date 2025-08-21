@@ -89,9 +89,18 @@ def generate_individual_pdfs(excel_file, output_folder):
 
         marks = []
         for subj, _code in SUBJECTS:
-            val = row[pick(cols, subj)]
-            m = int(val) if not (pd.isna(val) or val == "") else 0
+            raw_val = str(row[pick(cols, subj)]).strip()
+
+            if raw_val.upper() in ["AB", "A", "ABSENT"]:
+                m = 0   # absent treated as 0
+            else:
+                try:
+                    m = int(float(raw_val)) if raw_val != "" else 0
+                except:
+                    m = 0
+
             marks.append(m)
+
 
         total = sum(marks)
         percentage = round((total / (len(SUBJECTS)*100))*100, 1)
