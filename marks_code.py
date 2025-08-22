@@ -102,12 +102,13 @@ def generate_individual_pdfs(excel_file, output_folder):
             c.drawString(X_WORDS,   y, number_to_words(m))
 
         # Marks Part II (Chemistry onwards)
+        GAP_AFTER_PART1 = 2  # leave two empty rows after English
         for j, m in enumerate(marks[2:]):
-            y = Y_FIRST_ROW - 2*ROW_GAP - ROW_GAP
+            y = Y_FIRST_ROW - (2 + GAP_AFTER_PART1 + j) * ROW_GAP
             c.drawString(X_FIGURES, y, str(m))
-            c.drawString(X_WORDS,   y, number_to_words(m))
+            c.drawString(X_WORDS,   y, number_to_words(m))        # Totals & Result
 
-        # Totals & Result
+
         c.drawString(X_TOTAL_FIGS, Y_TOTAL_ROW-10, str(total))
         c.drawString(X_MARKS_WORDS, Y_MARKS_WORDS, number_to_words(total))
         c.drawString(X_PERCENTAGE, Y_PERCENTAGE, f"{percentage}%")
