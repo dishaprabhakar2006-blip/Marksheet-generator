@@ -103,7 +103,7 @@ def generate_individual_pdfs(excel_file, output_folder):
 
         # Marks Part II (Chemistry onwards)
         for j, m in enumerate(marks[2:]):
-            y = Y_FIRST_ROW - (2 + j) * ROW_GAP
+            y = Y_FIRST_ROW - 2*ROW_GAP - ROW_GAP
             c.drawString(X_FIGURES, y, str(m))
             c.drawString(X_WORDS,   y, number_to_words(m))
 
